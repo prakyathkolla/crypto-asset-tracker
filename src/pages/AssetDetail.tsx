@@ -1,11 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Loader2 } from "lucide-react";
+import { ArrowLeft, Loader2, Calendar } from "lucide-react";
 import { PriceChart } from "@/components/PriceChart";
 import { formatCurrency } from "@/lib/utils";
+import { Calendar as CalendarComponent } from "@/components/ui/calendar";
+import { Button } from "@/components/ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { format } from "date-fns";
+import { useState } from "react";
 
 const AssetDetail = () => {
   const { id } = useParams();
+  const [date, setDate] = useState<Date>(new Date());
 
   const { data: asset, isLoading: isLoadingAsset } = useQuery({
     queryKey: ["asset", id],
@@ -18,10 +24,18 @@ const AssetDetail = () => {
   });
 
   const { data: history, isLoading: isLoadingHistory } = useQuery({
-    queryKey: ["history", id],
+    queryKey: ["history", id, date],
     queryFn: async () => {
+      // Set the start time to the beginning of the selected date
+      const startTime = new Date(date);
+      startTime.setHours(0, 0, 0, 0);
+      
+      // Set the end time to the end of the selected date
+      const endTime = new Date(date);
+      endTime.setHours(23, 59, 59, 999);
+
       const response = await fetch(
-        `https://api.coincap.io/v2/assets/${id}/history?interval=h1`
+        `https://api.coincap.io/v2/assets/${id}/history?interval=h1&start=${startTime.getTime()}&end=${endTime.getTime()}`
       );
       const data = await response.json();
       return data.data;
@@ -92,7 +106,26 @@ const AssetDetail = () => {
           </div>
         </div>
 
-        <PriceChart data={history} />
+        <div className="flex justify-end mb-4">
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="outline" className="brutal-border">
+                <Calendar className="mr-2 h-4 w-4" />
+                {format(date, "PPP")}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0" align="end">
+              <CalendarComponent
+                mode="single"
+                selected={date}
+                onSelect={(newDate) => newDate && setDate(newDate)}
+                initialFocus
+              />
+            </PopoverContent>
+          </Popover>
+        </div>
+
+        <PriceChart data={history || []} />
       </div>
     </div>
   );
