@@ -1,69 +1,73 @@
-# Welcome to your Lovable project
+# Crypto Asset Tracker
 
-## Project info
+A modern cryptocurrency tracking application built with React and TypeScript, featuring a neo-brutalist design aesthetic.
 
-**URL**: https://lovable.dev/projects/a31a2d83-f073-4b04-b009-7551bda9bc5d
+## Features
 
-## How can I edit this code?
+- 📊 Real-time tracking of top 50 cryptocurrencies by market cap
+- 📈 Interactive price charts with historical data
+- 💰 Detailed asset information including market cap, volume, and price changes
+- 🎨 Unique neo-brutalist design with high contrast and bold typography
+- 📱 Fully responsive design for all devices
 
-There are several ways of editing your application.
+## Technologies Used
 
-**Use Lovable**
+- React + TypeScript
+- Vite for blazing fast development
+- Tailwind CSS for styling
+- Recharts for interactive data visualization
+- CoinCap API for real-time cryptocurrency data
+- React Query for efficient data fetching and caching
+- React Router for navigation
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a31a2d83-f073-4b04-b009-7551bda9bc5d) and start prompting.
+## Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
+1. Clone the repository:
+```bash
+git clone <your-repo-url>
+```
 
-**Use your preferred IDE**
+2. Install dependencies:
+```bash
+npm install
+```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. Start the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+4. Open your browser and navigate to `http://localhost:5173`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## API Integration
 
-**Use GitHub Codespaces**
+This project uses the [CoinCap API](https://docs.coincap.io/) to fetch cryptocurrency data. The API is free to use and doesn't require authentication for basic endpoints.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Project Structure
 
-## What technologies are used for this project?
+```
+src/
+├── components/     # Reusable UI components
+├── pages/         # Page components
+├── services/      # API service functions
+└── utils/         # Utility functions
+```
 
-This project is built with .
+## Contributing
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## How can I deploy this project?
+## License
 
-Simply open [Lovable](https://lovable.dev/projects/a31a2d83-f073-4b04-b009-7551bda9bc5d) and click on Share -> Publish.
+This project is open source and available under the [MIT License](LICENSE).
 
-## I want to use a custom domain - is that possible?
+## Acknowledgments
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+- [CoinCap API](https://docs.coincap.io/) for providing cryptocurrency data
+- [Recharts](https://recharts.org/) for the charting library
+- [Tailwind CSS](https://tailwindcss.com/) for the styling framework
+- [shadcn/ui](https://ui.shadcn.com/) for UI components
