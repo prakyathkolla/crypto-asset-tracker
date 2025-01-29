@@ -29,7 +29,7 @@ A modern cryptocurrency tracking application built with React and TypeScript, fe
 
 ---
 
-![ScreenShot of Form](images/weather.png)
+![ScreenShot of Form](public/crypto.png)
 
 ---
 
